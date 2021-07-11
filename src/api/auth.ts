@@ -11,7 +11,8 @@ async function login(email: string, password: string, _: boolean) {
     const isCorrectUser =
       CORRECT_USER.email === email && CORRECT_USER.password === password;
     setTimeout(
-      () => (isCorrectUser ? resolve("Success") : reject("Error")),
+      () =>
+        isCorrectUser ? resolve("Success") : reject("Wrong email or password"),
       1000
     );
   });
