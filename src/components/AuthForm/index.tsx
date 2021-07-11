@@ -9,10 +9,14 @@ type FormState = {
   dontRemember: boolean;
 };
 
+type FormErrors = Partial<Record<keyof FormState, string[]>>;
+
 type Props = {
   formState: FormState;
   isRequesting: boolean;
+  errors: FormErrors;
   submitError?: string;
+  onResetErrors(field: keyof FormState): void;
   onChange(state: FormState): void;
   onSubmit(state: FormState): void;
 };
@@ -23,6 +27,8 @@ function AuthForm({
   isRequesting,
   onSubmit,
   submitError,
+  errors,
+  onResetErrors,
 }: Props) {
   const { email, password, dontRemember } = formState;
 
@@ -32,6 +38,7 @@ function AuthForm({
         label="email"
         value={email}
         onChange={makeOnChange("email")}
+        error={errors.email?.[0]}
         disabled={isRequesting}
         type="email"
       />
@@ -39,6 +46,7 @@ function AuthForm({
         label="password"
         value={password}
         onChange={makeOnChange("password")}
+        error={errors.password?.[0]}
         disabled={isRequesting}
         type="password"
       />
@@ -61,9 +69,14 @@ function AuthForm({
   }
 
   function makeOnChange<T extends keyof FormState>(field: T) {
-    return (value: FormState[T]) => onChange({ ...formState, [field]: value });
+    return (value: FormState[T]) => {
+      if (errors[field]?.length) {
+        onResetErrors(field);
+      }
+      onChange({ ...formState, [field]: value });
+    };
   }
 }
 
-export type { FormState as AuthFormState };
+export type { FormState as AuthFormState, FormErrors as AuthFormErrors };
 export { AuthForm };

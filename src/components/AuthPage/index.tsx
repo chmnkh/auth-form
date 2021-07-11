@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { AuthForm, AuthFormState } from "../AuthForm";
+import { AuthForm, AuthFormErrors, AuthFormState } from "../AuthForm";
 import * as AuthAPI from "../../api/auth";
+import { validateIsRequired } from "../../validators/validateIsRequired";
+import { validateIsEmail } from "../../validators/validateIsEmail";
 
 function AuthPage() {
   const [isRequesting, setIsRequesting] = useState(false);
@@ -9,6 +11,7 @@ function AuthPage() {
     password: "",
     dontRemember: false,
   });
+  const [authFormErrors, setAuthFormErrors] = useState<AuthFormErrors>({});
   const [submitError, setSubmitError] = useState<string | undefined>(undefined);
 
   return (
@@ -18,6 +21,8 @@ function AuthPage() {
       onSubmit={handleSubmit}
       isRequesting={isRequesting}
       submitError={submitError}
+      errors={authFormErrors}
+      onResetErrors={handleResetErrors}
     />
   );
 
@@ -28,16 +33,37 @@ function AuthPage() {
   // Here I don't do that to not overcomplicate things.
 
   async function handleSubmit(state: AuthFormState) {
-    setIsRequesting(true);
-    setSubmitError(undefined);
-    try {
-      await AuthAPI.login(state.email, state.password, state.dontRemember);
-    } catch (error) {
-      setSubmitError(error);
-    } finally {
-      setIsRequesting(false);
+    const allErrors = validateForm(state);
+    const isInvalid = Object.values(allErrors).some(
+      (fieldErrors) => fieldErrors?.length
+    );
+    if (isInvalid) {
+      setAuthFormErrors(allErrors);
+    } else {
+      setIsRequesting(true);
+      setSubmitError(undefined);
+      try {
+        await AuthAPI.login(state.email, state.password, state.dontRemember);
+      } catch (error) {
+        setSubmitError(error);
+      } finally {
+        setIsRequesting(false);
+      }
     }
   }
+
+  function handleResetErrors(field: keyof AuthFormState) {
+    setAuthFormErrors({ ...authFormErrors, [field]: [] });
+  }
+}
+
+function validateForm({ email, password }: AuthFormState) {
+  const errors: Partial<Record<keyof AuthFormState, string[]>> = {
+    email: [validateIsRequired(email), validateIsEmail(email)].filter(Boolean),
+    password: [validateIsRequired(password)].filter(Boolean),
+  };
+
+  return errors;
 }
 
 export { AuthPage };
