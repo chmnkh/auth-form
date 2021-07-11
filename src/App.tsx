@@ -1,7 +1,5 @@
 import { AuthPage } from "./components/AuthPage";
 
-import "./App.css";
-
 function App() {
   return (
     <div className="App">
