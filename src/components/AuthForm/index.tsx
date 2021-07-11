@@ -27,7 +27,7 @@ function AuthForm({
   const { email, password, dontRemember } = formState;
 
   return (
-    <form onSubmit={handleFormSubmit}>
+    <form onSubmit={handleFormSubmit} noValidate>
       <TextInput
         label="email"
         value={email}
