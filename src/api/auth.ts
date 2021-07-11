@@ -3,11 +3,9 @@ const CORRECT_USER = {
   password: "Qwe_123",
 };
 
-type SuccessResponse = "Success";
-
 async function login(email: string, password: string, _: boolean) {
-  // server response
-  const response = await new Promise<SuccessResponse>((resolve, reject) => {
+  // simulate server response
+  const response = await new Promise<"Success">((resolve, reject) => {
     const isCorrectUser =
       CORRECT_USER.email === email && CORRECT_USER.password === password;
     setTimeout(
