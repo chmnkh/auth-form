@@ -2,7 +2,7 @@ import { useState } from "react";
 import block from "bem-cn-lite";
 
 import { AuthForm, AuthFormErrors, AuthFormState } from "../AuthForm";
-import * as AuthAPI from "../../api/auth";
+import * as AuthAPI from "../../../api/auth";
 import { validateIsRequired } from "../../validators/validateIsRequired";
 import { validateIsEmail } from "../../validators/validateIsEmail";
 

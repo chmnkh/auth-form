@@ -1,4 +1,4 @@
-import { AuthPage } from "./components/AuthPage";
+import { AuthPage } from "./view/components/AuthPage";
 
 function App() {
   return <AuthPage />;
