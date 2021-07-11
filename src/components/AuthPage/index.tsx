@@ -9,6 +9,7 @@ function AuthPage() {
     password: "",
     dontRemember: false,
   });
+  const [submitError, setSubmitError] = useState<string | undefined>(undefined);
 
   return (
     <AuthForm
@@ -16,6 +17,7 @@ function AuthPage() {
       onChange={setAuthFormState}
       onSubmit={handleSubmit}
       isRequesting={isRequesting}
+      submitError={submitError}
     />
   );
 
@@ -27,10 +29,11 @@ function AuthPage() {
 
   async function handleSubmit(state: AuthFormState) {
     setIsRequesting(true);
+    setSubmitError(undefined);
     try {
       await AuthAPI.login(state.email, state.password, state.dontRemember);
-    } catch (err) {
-      alert(err);
+    } catch (error) {
+      setSubmitError(error);
     } finally {
       setIsRequesting(false);
     }

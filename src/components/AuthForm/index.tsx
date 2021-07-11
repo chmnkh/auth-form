@@ -1,6 +1,7 @@
 import { TextInput } from "../TextInput";
 import { Checkbox } from "../Checkbox";
 import { Button } from "../Button";
+import { FormError } from "../FormError";
 
 type FormState = {
   email: string;
@@ -11,11 +12,18 @@ type FormState = {
 type Props = {
   formState: FormState;
   isRequesting: boolean;
+  submitError?: string;
   onChange(state: FormState): void;
   onSubmit(state: FormState): void;
 };
 
-function AuthForm({ formState, onChange, isRequesting, onSubmit }: Props) {
+function AuthForm({
+  formState,
+  onChange,
+  isRequesting,
+  onSubmit,
+  submitError,
+}: Props) {
   const { email, password, dontRemember } = formState;
 
   return (
@@ -43,6 +51,7 @@ function AuthForm({ formState, onChange, isRequesting, onSubmit }: Props) {
       <Button type="submit" showPreloader={isRequesting}>
         Submit
       </Button>
+      <FormError error={submitError} />
     </form>
   );
 
