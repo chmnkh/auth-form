@@ -10,35 +10,46 @@ type FormState = {
 
 type Props = {
   formState: FormState;
+  isRequesting: boolean;
   onChange(state: FormState): void;
   onSubmit(state: FormState): void;
 };
 
-function AuthForm({ formState, onChange }: Props) {
+function AuthForm({ formState, onChange, isRequesting, onSubmit }: Props) {
   const { email, password, dontRemember } = formState;
 
   return (
-    <form onSubmit={() => void 0}>
+    <form onSubmit={handleFormSubmit}>
       <TextInput
         label="email"
         value={email}
         onChange={makeOnChange("email")}
+        disabled={isRequesting}
         type="email"
       />
       <TextInput
         label="password"
         value={password}
         onChange={makeOnChange("password")}
+        disabled={isRequesting}
         type="password"
       />
       <Checkbox
         checked={dontRemember}
         onChange={makeOnChange("dontRemember")}
+        disabled={isRequesting}
         label="Don't remember"
       />
-      <Button type="submit">Submit</Button>
+      <Button type="submit" showPreloader={isRequesting}>
+        Submit
+      </Button>
     </form>
   );
+
+  function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    onSubmit(formState);
+  }
 
   function makeOnChange<T extends keyof FormState>(field: T) {
     return (value: FormState[T]) => onChange({ ...formState, [field]: value });
