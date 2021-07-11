@@ -60,7 +60,7 @@ function AuthForm({
         checked={dontRemember}
         onChange={makeOnChange("dontRemember")}
         disabled={isRequesting}
-        label="Don't remember"
+        label="Don't remember me"
       />
       <Button type="submit" showPreloader={isRequesting}>
         Submit

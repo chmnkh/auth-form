@@ -22,16 +22,25 @@ function AuthPage() {
 
   return (
     <div className={b()}>
-      <div className={b("form")}>
-        <AuthForm
-          formState={authFormState}
-          onChange={setAuthFormState}
-          onSubmit={handleSubmit}
-          isRequesting={isRequesting}
-          submitError={submitError}
-          errors={authFormErrors}
-          onResetErrors={handleResetErrors}
-        />
+      <div className={b("content")}>
+        <h1 className={b("page-title")}>
+          Sign in to
+          <span className={b("app-name")} title="Somewhere">
+            {" "}
+            Куда-то
+          </span>
+        </h1>
+        <div className={b("form")}>
+          <AuthForm
+            formState={authFormState}
+            onChange={setAuthFormState}
+            onSubmit={handleSubmit}
+            isRequesting={isRequesting}
+            submitError={submitError}
+            errors={authFormErrors}
+            onResetErrors={handleResetErrors}
+          />
+        </div>
       </div>
     </div>
   );
