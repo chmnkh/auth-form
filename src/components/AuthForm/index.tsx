@@ -26,6 +26,10 @@ type Props = {
 };
 
 const b = block("auth-form");
+const FORGOT_PASSWORD_LINK = {
+  text: "Forgot password?",
+  href: "https://ih1.redbubble.net/image.1476180554.5690/flat,750x,075,f-pad,750x1000,f8f8f8.jpg",
+};
 
 function AuthForm({
   formState,
@@ -55,6 +59,7 @@ function AuthForm({
         error={errors.password?.[0]}
         disabled={isRequesting}
         type="password"
+        link={FORGOT_PASSWORD_LINK}
       />
       <Checkbox
         checked={dontRemember}

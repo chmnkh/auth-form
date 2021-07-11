@@ -21,4 +21,9 @@
   &__label {
     text-transform: capitalize;
   }
+
+  &__upper-part {
+    display: flex;
+    justify-content: space-between;
+  }
 }
