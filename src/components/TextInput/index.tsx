@@ -20,12 +20,12 @@ function TextInput({ onChange, label, error, ...rest }: Props) {
   return (
     <label className={b()}>
       <div className={b("label")}>{label}</div>
-      {error}
       <input
-        className={b("input")}
+        className={b("input", { "with-error": !!error })}
         onChange={(e) => onChange(e.target.value)}
         {...rest}
       />
+      <div className={b("error")}>{error}</div>
     </label>
   );
 }
