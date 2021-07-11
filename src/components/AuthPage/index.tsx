@@ -1,8 +1,14 @@
 import { useState } from "react";
+import block from "bem-cn-lite";
+
 import { AuthForm, AuthFormErrors, AuthFormState } from "../AuthForm";
 import * as AuthAPI from "../../api/auth";
 import { validateIsRequired } from "../../validators/validateIsRequired";
 import { validateIsEmail } from "../../validators/validateIsEmail";
+
+import "./index.scss";
+
+const b = block("auth-page");
 
 function AuthPage() {
   const [isRequesting, setIsRequesting] = useState(false);
@@ -15,15 +21,19 @@ function AuthPage() {
   const [submitError, setSubmitError] = useState<string | undefined>(undefined);
 
   return (
-    <AuthForm
-      formState={authFormState}
-      onChange={setAuthFormState}
-      onSubmit={handleSubmit}
-      isRequesting={isRequesting}
-      submitError={submitError}
-      errors={authFormErrors}
-      onResetErrors={handleResetErrors}
-    />
+    <div className={b()}>
+      <div className={b("form")}>
+        <AuthForm
+          formState={authFormState}
+          onChange={setAuthFormState}
+          onSubmit={handleSubmit}
+          isRequesting={isRequesting}
+          submitError={submitError}
+          errors={authFormErrors}
+          onResetErrors={handleResetErrors}
+        />
+      </div>
+    </div>
   );
 
   // Normally (in a big project, where managing complexity is more important)

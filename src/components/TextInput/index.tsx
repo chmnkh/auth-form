@@ -1,4 +1,7 @@
 import { InputHTMLAttributes } from "react";
+import block from "bem-cn-lite";
+
+import "./index.scss";
 
 type InputWithoutOnChange = Omit<
   InputHTMLAttributes<HTMLInputElement>,
@@ -11,12 +14,18 @@ type Props = InputWithoutOnChange & {
   onChange(value: string): void;
 };
 
+const b = block("text-input");
+
 function TextInput({ onChange, label, error, ...rest }: Props) {
   return (
-    <label>
-      {label}
+    <label className={b()}>
+      <div className={b("label")}>{label}</div>
       {error}
-      <input onChange={(e) => onChange(e.target.value)} {...rest} />
+      <input
+        className={b("input")}
+        onChange={(e) => onChange(e.target.value)}
+        {...rest}
+      />
     </label>
   );
 }

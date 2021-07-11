@@ -1,0 +1,15 @@
+.text-input {
+  &__input {
+    width: 100%;
+    font-size: 17px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border-width: 1px;
+    padding: 0 7px;
+    line-height: 1.75;
+  }
+
+  &__label {
+    text-transform: capitalize;
+  }
+}

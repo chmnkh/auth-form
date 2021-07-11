@@ -1,7 +1,11 @@
+import block from "bem-cn-lite";
+
 import { TextInput } from "../TextInput";
 import { Checkbox } from "../Checkbox";
 import { Button } from "../Button";
 import { FormError } from "../FormError";
+
+import "./index.scss";
 
 type FormState = {
   email: string;
@@ -21,6 +25,8 @@ type Props = {
   onSubmit(state: FormState): void;
 };
 
+const b = block("auth-form");
+
 function AuthForm({
   formState,
   onChange,
@@ -33,7 +39,7 @@ function AuthForm({
   const { email, password, dontRemember } = formState;
 
   return (
-    <form onSubmit={handleFormSubmit} noValidate>
+    <form className={b()} onSubmit={handleFormSubmit} noValidate>
       <TextInput
         label="email"
         value={email}

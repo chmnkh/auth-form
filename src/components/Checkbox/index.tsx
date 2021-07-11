@@ -1,3 +1,8 @@
+import block from "bem-cn-lite";
+import "./index.scss";
+
+const b = block("checkbox");
+
 type Props = {
   checked: boolean;
   label: string;
@@ -7,7 +12,7 @@ type Props = {
 
 function Checkbox({ checked, onChange, label, disabled }: Props) {
   return (
-    <label>
+    <label className={b()}>
       <input
         checked={checked}
         onChange={(e) => onChange(e.target.checked)}
