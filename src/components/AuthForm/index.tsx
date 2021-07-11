@@ -63,7 +63,7 @@ function AuthForm({
         label="Don't remember me"
       />
       <Button type="submit" showPreloader={isRequesting}>
-        Submit
+        Sign in
       </Button>
       <FormError error={submitError} />
     </form>
