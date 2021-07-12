@@ -1,6 +1,9 @@
 # Auth form
 
+gh-pages: https://chmnkh.github.io/auth-form/
+
 Simple auth form with 3 fields.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
