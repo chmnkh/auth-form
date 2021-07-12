@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.81c46d15.chunk.css",
-    "main.js": "/static/js/main.ccebbe72.chunk.js",
-    "main.js.map": "/static/js/main.ccebbe72.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.3a17d4ce.js",
-    "runtime-main.js.map": "/static/js/runtime-main.3a17d4ce.js.map",
-    "static/js/2.8db5bd51.chunk.js": "/static/js/2.8db5bd51.chunk.js",
-    "static/js/2.8db5bd51.chunk.js.map": "/static/js/2.8db5bd51.chunk.js.map",
-    "static/js/3.b73f563b.chunk.js": "/static/js/3.b73f563b.chunk.js",
-    "static/js/3.b73f563b.chunk.js.map": "/static/js/3.b73f563b.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.81c46d15.chunk.css.map": "/static/css/main.81c46d15.chunk.css.map",
-    "static/js/2.8db5bd51.chunk.js.LICENSE.txt": "/static/js/2.8db5bd51.chunk.js.LICENSE.txt"
+    "main.css": "/auth-form/static/css/main.81c46d15.chunk.css",
+    "main.js": "/auth-form/static/js/main.ccebbe72.chunk.js",
+    "main.js.map": "/auth-form/static/js/main.ccebbe72.chunk.js.map",
+    "runtime-main.js": "/auth-form/static/js/runtime-main.dd2a582f.js",
+    "runtime-main.js.map": "/auth-form/static/js/runtime-main.dd2a582f.js.map",
+    "static/js/2.8db5bd51.chunk.js": "/auth-form/static/js/2.8db5bd51.chunk.js",
+    "static/js/2.8db5bd51.chunk.js.map": "/auth-form/static/js/2.8db5bd51.chunk.js.map",
+    "static/js/3.b73f563b.chunk.js": "/auth-form/static/js/3.b73f563b.chunk.js",
+    "static/js/3.b73f563b.chunk.js.map": "/auth-form/static/js/3.b73f563b.chunk.js.map",
+    "index.html": "/auth-form/index.html",
+    "static/css/main.81c46d15.chunk.css.map": "/auth-form/static/css/main.81c46d15.chunk.css.map",
+    "static/js/2.8db5bd51.chunk.js.LICENSE.txt": "/auth-form/static/js/2.8db5bd51.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.3a17d4ce.js",
+    "static/js/runtime-main.dd2a582f.js",
     "static/js/2.8db5bd51.chunk.js",
     "static/css/main.81c46d15.chunk.css",
     "static/js/main.ccebbe72.chunk.js"
